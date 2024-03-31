@@ -48,7 +48,7 @@ def wait_for_run_completion(client, thread_id, run_id, sleep_interval=5):
         logging.info("Waiting for run to complete...")
         time.sleep(sleep_interval)
 
-@app.route('/ask', methods=['POST'])
+@app.route('/', methods=['POST'])
 def ask():
     data = request.get_json()
     message_text = data.get('message')
@@ -68,5 +68,5 @@ def ask():
         return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True,port=5006)
+    app.run(debug=True, host='0.0.0.0')
 
